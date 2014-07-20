@@ -61,8 +61,23 @@ exports.getQuestions = function(req, res) {
     //owner: req.user._id,
   }, function(err, questions) {
     if(err) { return handleError(res, err); }
-    return res.json(201, questions);
+    return res.json(200, questions);
   });
+};
+
+// Vote
+exports.vote = function(req, res) {
+console.log(req.params.id);
+  Question.findOneAndUpdate(
+    { _id: req.params.id },
+    { $inc: { votes: 1 } },
+    function(err, question) {
+      if(err) { return handleError(res, err); }
+      question.save();
+      return res.json(201, question);
+    }
+  );
+
 };
 
 // // Deletes a thing from the DB.

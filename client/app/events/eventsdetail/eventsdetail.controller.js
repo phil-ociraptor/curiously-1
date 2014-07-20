@@ -27,7 +27,7 @@ angular.module('curiouslyApp')
     $scope.vote = function(question) {
       question.votes++;
       question.hasVoted = true;
-      $http.post('/api/events/' + question.event + '/questions/' + question._id + '/vote', { name: $scope.newThing });
+      $http.post('/api/event/' + question.event + '/questions/' + question._id + '/vote');
     };
 
     $scope.ask = function(form) {

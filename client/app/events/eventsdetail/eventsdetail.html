@@ -30,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="question in questions">
+              <tr ng-repeat="question in questions | orderBy:'votes':'reverse'">
                 <td>{{question.question}}</td>
                 <td class="text-right"><button type="button" class="btn btn-default" id="{{question._id}}" ng-click="vote(question)" ng-disabled="question.hasVoted"><strong>{{question.votes}}</strong> <span class="glyphicon glyphicon-heart
 "></span></button></td>
