@@ -13,12 +13,13 @@ var _ = require('lodash');
 var Event = require('./event.model');
 
 // Get list of things
-// exports.index = function(req, res) {
-//   Thing.find(function (err, things) {
-//     if(err) { return handleError(res, err); }
-//     return res.json(200, things);
-//   });
-// };
+exports.index = function(req, res) {
+  console.log(req.user);
+  Event.find({owner: req.user._id}, function (err, loadedEvents) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, loadedEvents);
+  });
+};
 
 // Get a single thing
 exports.show = function(req, res) {
@@ -34,26 +35,26 @@ exports.create = function(req, res) {
   Event.create({
     name: req.body.name,
     owner: req.user._id,
-    code: req.body.code
+    code: req.body.code,
   }, function(err, thing) {
     if(err) { return handleError(res, err); }
     return res.json(201, thing);
   });
 };
 
-// // Updates an existing thing in the DB.
-// exports.update = function(req, res) {
-//   if(req.body._id) { delete req.body._id; }
-//   Thing.findById(req.params.id, function (err, thing) {
-//     if (err) { return handleError(res, err); }
-//     if(!thing) { return res.send(404); }
-//     var updated = _.merge(thing, req.body);
-//     updated.save(function (err) {
-//       if (err) { return handleError(res, err); }
-//       return res.json(200, thing);
-//     });
-//   });
-// };
+exports.addQuestion = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  Event.findById(req.params.id, function (err, loadedEvent) {
+    if (err) { return handleError(res, err); }
+    if(!loadedEvent) { return res.send(404); }
+    var question = { question: req.body.question };
+    var updated = loadedEvent.questions.push(question);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, loadedEvent);
+    });
+  });
+};
 
 // // Deletes a thing from the DB.
 // exports.destroy = function(req, res) {

@@ -3,7 +3,8 @@
 angular.module('curiouslyApp')
   .factory('Event', function ($resource) {
     return $resource('/api/event/:code/:controller', {
-      id: '@code'
+      code: '@code',
+      id: '@_id'
     },
     {
       create: {
@@ -12,6 +13,15 @@ angular.module('curiouslyApp')
       },
       get: {
         method: 'GET'
+      },
+      list: {
+        method: 'GET',
+        url: '/api/event',
+        isArray: true
+      },
+      addQuestion: {
+        method: 'POST',
+        url: '/api/event/:id/questions'
       }
 	  });
   });

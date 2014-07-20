@@ -5,14 +5,40 @@
       <h1>{{eventName}}</h1>
     </div>
 
-    <div class="col-sm-12" ng-show="isLoggedIn()">
+    <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Event Detail</h3>
         </div>
         <div class="panel-body">
-          <p><strong>Status:</strong> {{eventActive}}</p>
+          <p><strong>Status:</strong> <span ng-show="eventActive">Live</span><span ng-hide="eventActive">Inactive</span></p>
           <p><strong>Event Code:</strong> {{eventCode}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Event Questions</h3>
+        </div>
+        <div class="panel-body">
+          <p>This event has no questions yet!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Ask a Question</h3>
+        </div>
+        <div class="panel-body">
+          <p>Before asking, check if there's a similar question to yours.</p>
+          <form role="form" ng-submit="ask(form)">
+            <div class="form-group"><textarea name="question" class="form-control" rows="3" required></textarea></div>
+            <div class="form-group"><button type="submit" class="btn btn-primary btn-lg">Ask <span class="glyphicon glyphicon-bullhorn"></span></button></div>
+          </form>
         </div>
       </div>
     </div>

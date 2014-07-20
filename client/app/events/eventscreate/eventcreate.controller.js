@@ -8,7 +8,7 @@ angular.module('curiouslyApp')
     }
     $scope.create = function(form) {
       $scope.submitted = true;
-      Event.create({name: $scope.eventName, code: $scope.eventCode }, function(createdEvent) {
+      Event.create({name: $scope.eventName, code: $scope.eventCode}, function(createdEvent) {
         $location.path('/events/' + createdEvent.code);
       }, function(err) {
         if(err.data.errors.code && err.data.errors.code.type != 'required') {

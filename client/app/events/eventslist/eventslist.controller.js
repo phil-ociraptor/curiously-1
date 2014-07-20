@@ -1,18 +1,11 @@
 'use strict';
 
 angular.module('curiouslyApp')
-  .controller('EventsListCtrl', function ($scope, $http, Auth, User) {
+  .controller('EventsListCtrl', function ($scope, $http, Auth, User, Event) {
     $scope.isLoggedIn = Auth.isLoggedIn;
 
-    $scope.events = [{
-      code: 'ah14',
-      name: 'AngelHack',
-      active: true
-    },
-    {
-      code: 'angularh14',
-      name: 'AngelHack',
-      active: false
-    }];
+    Event.list(function(loadedEvents) {
+      $scope.events = loadedEvents
+    });
 
   });
