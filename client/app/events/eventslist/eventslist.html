@@ -16,13 +16,16 @@
             <thead>
               <tr>
                 <th>Event</th>
-                <th>When?</th>
+                <th>Code</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="event in events">
                 <td><a href="/events/{{event.code}}">{{event.name}}</a></td>
-                <td>{{event.time}}</td>
+                <td>{{event.code}}</td>
+                <td ng-show="event.active">Live</td>
+                <td ng-show="!event.active">Standby</td>
               </tr>
             </tbody>
           </table>
@@ -43,6 +46,18 @@
             </div>
             <button type="submit" class="btn btn-primary">Find Event</button>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12" ng-show="isLoggedIn()">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Host an Event</h3>
+        </div>
+        <div class="panel-body">
+          <p>Holding a talk, lecture or presentation? Create an event to interact with your audience!</p>
+          <a href="/events/create" class="btn btn-default" role="button">Create your Event</a>
         </div>
       </div>
     </div>
