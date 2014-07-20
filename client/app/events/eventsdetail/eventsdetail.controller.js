@@ -24,6 +24,12 @@ angular.module('curiouslyApp')
       $location.path('/events');
     });
 
+    $scope.vote = function(question) {
+      question.votes++;
+      question.hasVoted = true;
+      $http.post('/api/events/' + question.event + '/questions/' + question._id + '/vote', { name: $scope.newThing });
+    };
+
     $scope.ask = function(form) {
       $scope.submitted = true;
       $scope.success = false;

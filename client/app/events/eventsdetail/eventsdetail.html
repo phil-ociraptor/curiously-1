@@ -23,18 +23,17 @@
           <h3 class="panel-title">Event Questions</h3>
         </div>
         <div class="panel-body">
-          <p ng-hide="questions">This event has no questions yet!</p>
-          <table class="table table-striped" ng-show="questions">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th>Question</th>
-                <th>Votes</th>
+                <th colspan="2">Question</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="question in questions">
                 <td>{{question.question}}</td>
-                <td>{{question.votes}}</td>
+                <td class="text-right"><button type="button" class="btn btn-default" id="{{question._id}}" ng-click="vote(question)" ng-disabled="question.hasVoted"><strong>{{question.votes}}</strong> <span class="glyphicon glyphicon-heart
+"></span></button></td>
               </tr>
             </tbody>
           </table>
