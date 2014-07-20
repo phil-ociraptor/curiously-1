@@ -1,0 +1,50 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+    <div class="col-sm-12">
+      <h1>Events</h1>
+    </div>
+
+    <div class="col-sm-12" ng-show="isLoggedIn()">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">My Events</h3>
+        </div>
+        <div class="panel-body">
+          <p ng-hide="events">Sorry, you do not have any events at the moment!</p>
+          <table class="table table-striped" ng-show="events">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>When?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="event in events">
+                <td><a href="/events/{{event.code}}">{{event.name}}</a></td>
+                <td>{{event.time}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Got an event code?</h3>
+        </div>
+        <div class="panel-body">
+          <p>The event code is a short identifier provided to you by the organizer of your event.</p>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <input type="email" class="form-control" id="eventCode" placeholder="Enter event code">
+            </div>
+            <button type="submit" class="btn btn-primary">Find Event</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
