@@ -1,37 +1,88 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
+<section id="intro">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-lg-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1 col-md-push-8 text-center">
+        <img src="/assets/images/intro.png">
+      </div>
+      <div class="col-md-8 col-md-pull-4 text-center">
+        <h1 data-fittext="1.4" data-fittext-min="30"><em>CURIOUS</em> &mdash; responsive interactive real-time Q&amp;A</h1>
+      </div>
     </div>
   </div>
+</section>
+<section id="features">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-4 feature">
+        <img src="/assets/images/feature-openid.png">
+        <h3>Connect with Audience</h3>
+      </div>
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-</div>
+      <div class="col-sm-4 feature">
+        <img src="/assets/images/feature-live-polls.png">
+        <h3>Answer Questions</h3>
+      </div>
 
-<footer class="footer">
-  <div class="container">
-      <p><a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+      <div class="col-sm-4 feature">
+        <img src="/assets/images/feature-realtime.png">
+        <h3>Real-time Feedback</h3>
+      </div>
+    </div>
   </div>
-</footer>
+</section>
+
+<section id="process">
+  <div class="container text-center">
+    <h1>4 Simple Steps</h1>
+    <h2 class="lead">With <em>CURIOUS</em>, connecting with your audience has never been easier.</h2>
+    <div class="process-line hidden-xs"></div>
+    <div class="row process-list">
+      <div class="col-sm-3">
+        <div class="icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+        <h3>Create Event</h3>
+      </div>
+      <div class="col-sm-3">
+        <div class="icon"><span class="glyphicon glyphicon-send"></span></div>
+        <h3>Share Event Code</h3>
+      </div>
+      <div class="col-sm-3">
+        <div class="icon"><span class="glyphicon glyphicon-dashboard"></span></div>
+        <h3>Deliver your Presentation</h3>
+      </div>
+      <div class="col-sm-3">
+        <div class="icon"><span class="glyphicon glyphicon-stats"></span></div>
+        <h3>Connect with Audience</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="getstarted">
+    <div class="container text-center">
+      <h1>Try out <em>CURIOUS</em> now!</h1>
+      <p><a class="btn btn-primary btn-lg" href="/events">Get Started!</a></p>
+    </div>
+  </section>
+
+  <section id="technology">
+    <div class="container text-center">
+      <h1>Built on the latest web technologies</h1>
+      <div class="row">
+        <div class="col-sm-3">
+          <a href="http://nodejs.org/" target="_blank"><div class="icon"><img src="/assets/images/nodejs.png"></div></a>
+        </div>
+        <div class="col-sm-3">
+          <a href="http://mongodb.org/" target="_blank"><div class="icon"><img src="/assets/images/mongodb.png"></div></a>
+        </div>
+        <div class="col-sm-3">
+          <a href="http://expressjs.com/" target="_blank"><div class="icon"><img src="/assets/images/express.png"></div></a>
+        </div>
+        <div class="col-sm-3">
+          <a href="http://angularjs.org/" target="_blank"><div class="icon"><img src="/assets/images/angularjs.png"></div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
