@@ -22,6 +22,11 @@ angular.module('curiouslyApp')
       addQuestion: {
         method: 'POST',
         url: '/api/event/:id/questions'
+      },
+      getQuestions: {
+        method: 'GET',
+        url: '/api/event/:id/questions',
+        isArray: true
       }
 	  });
   });

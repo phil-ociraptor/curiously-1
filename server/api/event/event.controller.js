@@ -11,10 +11,10 @@
 
 var _ = require('lodash');
 var Event = require('./event.model');
+var Question = require('./question.model');
 
 // Get list of things
 exports.index = function(req, res) {
-  console.log(req.user);
   Event.find({owner: req.user._id}, function (err, loadedEvents) {
     if(err) { return handleError(res, err); }
     return res.json(200, loadedEvents);
@@ -42,16 +42,27 @@ exports.create = function(req, res) {
   });
 };
 
+// Creates a new question in the DB.
 exports.addQuestion = function(req, res) {
-  Event.findOneAndUpdate(
-      {_id: req.params.id},
-      {$push: {questions: {question: req.body.question, votes: 0}}},
-      {safe: true, upsert: true},
-      function(err, model) {
-        if(err) { return handleError(res, err); }
-        return res.json(201, model);
-      }
-  );
+  Question.create({
+    question: req.body.question,
+    event: req.params.id
+    //owner: req.user._id,
+  }, function(err, question) {
+    if(err) { return handleError(res, err); }
+    return res.json(201, question);
+  });
+};
+
+// Gets question from the DB.
+exports.getQuestions = function(req, res) {
+  Question.find({
+    event: req.params.id
+    //owner: req.user._id,
+  }, function(err, questions) {
+    if(err) { return handleError(res, err); }
+    return res.json(201, questions);
+  });
 };
 
 // // Deletes a thing from the DB.

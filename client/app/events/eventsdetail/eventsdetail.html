@@ -23,7 +23,21 @@
           <h3 class="panel-title">Event Questions</h3>
         </div>
         <div class="panel-body">
-          <p>This event has no questions yet!</p>
+          <p ng-hide="questions">This event has no questions yet!</p>
+          <table class="table table-striped" ng-show="questions">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Votes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="question in questions">
+                <td>{{question.question}}</td>
+                <td>{{question.votes}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -34,6 +48,7 @@
           <h3 class="panel-title">Ask a Question</h3>
         </div>
         <div class="panel-body">
+          <div class="alert alert-success" role="alert" ng-show="success">Your question has been added!</div>
           <p>Before asking, check if there's a similar question to yours.</p>
           <form role="form" ng-submit="ask(form)">
             <div class="form-group"><textarea name="question" class="form-control" rows="3" ng-model="question" required></textarea></div>

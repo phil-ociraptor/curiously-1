@@ -10,6 +10,7 @@ router.get('/', auth.isAuthenticated(), controller.index);
 router.get('/:code', controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.post('/:id/questions', controller.addQuestion);
+router.get('/:id/questions', controller.getQuestions);
 //router.patch('/:id', controller.update);
 //router.delete('/:id', controller.destroy);
 
