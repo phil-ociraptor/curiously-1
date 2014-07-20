@@ -36,7 +36,7 @@
         <div class="panel-body">
           <p>Before asking, check if there's a similar question to yours.</p>
           <form role="form" ng-submit="ask(form)">
-            <div class="form-group"><textarea name="question" class="form-control" rows="3" required></textarea></div>
+            <div class="form-group"><textarea name="question" class="form-control" rows="3" ng-model="question" required></textarea></div>
             <div class="form-group"><button type="submit" class="btn btn-primary btn-lg">Ask <span class="glyphicon glyphicon-bullhorn"></span></button></div>
           </form>
         </div>

@@ -43,17 +43,15 @@ exports.create = function(req, res) {
 };
 
 exports.addQuestion = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Event.findById(req.params.id, function (err, loadedEvent) {
-    if (err) { return handleError(res, err); }
-    if(!loadedEvent) { return res.send(404); }
-    var question = { question: req.body.question };
-    var updated = loadedEvent.questions.push(question);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, loadedEvent);
-    });
-  });
+  Event.findOneAndUpdate(
+      {_id: req.params.id},
+      {$push: {questions: {question: req.body.question, votes: 0}}},
+      {safe: true, upsert: true},
+      function(err, model) {
+        if(err) { return handleError(res, err); }
+        return res.json(201, model);
+      }
+  );
 };
 
 // // Deletes a thing from the DB.

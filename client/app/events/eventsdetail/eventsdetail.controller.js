@@ -15,14 +15,11 @@ angular.module('curiouslyApp')
 
     $scope.ask = function(form) {
       $scope.submitted = true;
+      console.log($scope.question);
       Event.addQuestion({question: $scope.question, _id: $scope.eventId}, function(createdEvent) {
         $location.path('/events/' + createdEvent.code);
       }, function(err) {
-        if(err.data.errors.code && err.data.errors.code.type != 'required') {
-          $scope.errorMessage = 'Please try a different code.';
-        } else {
-          $scope.errorMessage = 'Please make sure all fields are filled in correctly.';
-        }
+       
       });
     };
 
