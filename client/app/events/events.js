@@ -12,5 +12,10 @@ angular.module('curiouslyApp')
         url: '/events/create',
         templateUrl: 'app/events/eventscreate/eventscreate.html',
         controller: 'EventsCreateCtrl'
+      })
+      .state('eventsdetail', {
+        url: '/events/:code',
+        templateUrl: 'app/events/eventsdetail/eventsdetail.html',
+        controller: 'EventsDetailCtrl'
       });
   });
